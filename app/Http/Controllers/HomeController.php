@@ -15,9 +15,16 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         $posts = Post::when($request->query('search'), function (Builder $query) use ($request) {
-            return $query->where('title', 'LIKE', '%' . $request->query('search') . '%')
-                ->orWhere('body', 'LIKE', '%' . $request->query('search') . '%');
+            return $query->where('title', 'LIKE', '%'.$request->query('search').'%')
+                ->orWhere('body', 'LIKE', '%'.$request->query('search').'%');
         })
+            ->when($request->query('category'), function (Builder $query) use ($request) {
+                // return $query->whereHas('category', function (Builder $query) use ($request) {
+                //     return $query->where('slug', $request->query('category'));
+                // });
+
+                return $query->whereRelation('category', 'slug', $request->query('category'));
+            })
             ->latest()
             ->paginate(10);
 
