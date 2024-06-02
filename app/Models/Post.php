@@ -16,7 +16,7 @@ class Post extends Model
         'title',
         'slug',
         'body',
-        'views'
+        'views',
     ];
 
     public function user(): BelongsTo
