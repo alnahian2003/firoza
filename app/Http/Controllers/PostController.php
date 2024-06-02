@@ -48,19 +48,12 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Post $post)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::latest()->get();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -68,7 +61,15 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $validated = $request->validated();
+
+        if ($validated['title'] !== $post->title) {
+            $validated['slug'] = str($validated['title'])->slug();
+        }
+
+        $post->updateOrFail($validated);
+
+        return to_route('admin.posts.index')->with('success', 'Post Updated Successfully');
     }
 
     /**
