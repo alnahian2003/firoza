@@ -21,9 +21,9 @@
 
                     {{-- Success Message --}}
                     @if (session('success'))
-                        <div class="mb-4 flex items-center rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 dark:border-green-800 dark:bg-gray-800 dark:text-green-400"
+                        <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:border-green-800 dark:bg-gray-800 dark:text-green-400"
                             role="alert">
-                            <svg class="me-3 inline h-4 w-4 flex-shrink-0" aria-hidden="true"
+                            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path
                                     d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
@@ -38,9 +38,9 @@
 
                     {{-- Posts Table --}}
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+                        <table class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
                             <thead
-                                class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th class="px-6 py-3" scope="col">
                                         Title
@@ -67,24 +67,24 @@
                             <tbody>
                                 @forelse ($posts as $post)
                                     <tr
-                                        class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
-                                        <th class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                                        class="bg-white border-b hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+                                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                                             scope="row">
                                             {{ $post->title }}
                                         </th>
-                                        <td class="whitespace-nowrap px-6 py-4">
+                                        <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $post->category->name }}
                                         </td>
-                                        <td class="whitespace-nowrap px-6 py-4">
+                                        <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $post->user->name }}
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ number_format($post->views) }}
                                         </td>
-                                        <td class="whitespace-nowrap px-6 py-4">
+                                        <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $post->created_at->diffForHumans() }}
                                         </td>
-                                        <td class="space-x-4 px-6 py-4 text-right">
+                                        <td class="px-6 py-4 space-x-4 text-right">
                                             <a class="font-medium text-teal-600 hover:underline dark:text-teal-500"
                                                 href="{{ route('blog.show', $post) }}" target="_blank">View</a>
 
@@ -106,8 +106,8 @@
 
                                 @empty
                                     <tr
-                                        class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
-                                        <th class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                                        class="bg-white border-b hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+                                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                                             scope="row">
                                             No posts available yet.
                                         </th>
@@ -119,7 +119,7 @@
                                         </td>
                                         <td class="px-6 py-4">
                                         </td>
-                                        <td class="space-x-4 px-6 py-4 text-right">
+                                        <td class="px-6 py-4 space-x-4 text-right">
                                         </td>
                                     </tr>
                                 @endforelse
@@ -127,7 +127,7 @@
                         </table>
                     </div>
 
-                    {{-- <div class="mt-4">{{ $posts->links() }}</div> --}}
+                    <div class="mt-4">{{ $posts->links() }}</div>
 
                 </div>
             </div>

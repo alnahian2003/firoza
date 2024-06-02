@@ -77,6 +77,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->deleteOrFail();
+
+        return to_route('admin.posts.index')->with('success', 'Post Deleted Successfully');
     }
 }
