@@ -30,7 +30,8 @@
                               </div>
                               <input
                                   class="ui-not-focus-visible:outline-none block w-full rounded-full border-0 bg-white/5 py-3 pl-10 pr-3 text-lg text-zinc-400 ring-1 ring-inset ring-white/10 transition placeholder:text-zinc-400 hover:ring-white/20 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-2xl sm:leading-6 lg:flex"
-                                  id="search" name="query" placeholder="Search" type="search" />
+                                  id="search" name="search" value="{{ request('search') }}" placeholder="Search"
+                                  type="search" />
                           </div>
                       </form>
                   </div>
