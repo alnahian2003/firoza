@@ -20,7 +20,7 @@ Route::middleware('auth')
     ->prefix('admin/')
     ->name('admin.')
     ->group(function () {
-        Route::resource('/categories', CategoryController::class);
+        Route::resource('/categories', CategoryController::class)->except('show');
         Route::resource('/posts', PostController::class);
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
