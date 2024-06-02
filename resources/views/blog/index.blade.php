@@ -83,7 +83,7 @@
 
                             <span
                                 class="h-6 w-6 rounded-full bg-emerald-800/40 py-0.5 text-center text-sm font-medium text-emerald-400 ring-1 ring-emerald-400/20 transition">
-                                {{ $category->posts->count() }}
+                            {{ $category->posts->count() }}
                             </span>
                         </a>
                     @empty
